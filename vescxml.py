@@ -79,7 +79,7 @@ with st.sidebar:
             if len(uploaded_files) < 3:
                 st.error("This is a temporary solution. Please upload at least 3 files")
                 st.stop()
-            # Make sure user accepts terms and conditions
+            # Make sure user accepts terms and conditionsSSs
             if not checkbox_val:
                 st.error("Please accept the terms and conditions")
                 st.stop()
@@ -87,7 +87,7 @@ with st.sidebar:
             Userid = random.randint(1, 999999999999999999999)
             st.session_state['userid'] = Userid
             stored_number = session_state.get('userid', 0)
-            st.warning("Your user id is: " + str(Userid))
+            #st.warning("Your user id is: " + str(Userid))
 
             # Make a folder with the user id inside the XML folder
             os.mkdir("XML/" + str(Userid))
@@ -173,7 +173,7 @@ if submitted:
     
 
     #Button to copy a sharable link to the user id
-    sharelink = f"http://localhost:8501/?submitted=True&userid={Userid}"
+    sharelink = f"http://vescxml.gproconnect.com/?submitted=True&userid={Userid}"
     st.link_button("Share Link", sharelink)
 
     #Load all 3 files
@@ -250,8 +250,8 @@ if submitted:
         st.error("Your wheel diameter is less than 0.2mm, That's pretty low. You should probably use a bigger wheel or change your settings.")
 
     #Check for slow abs current
-    if int(phrasemotor.find('.//l_slow_abs_current').text) == 0:
-        st.warning("Slow abs current is disablled, This mostlikely dosen't matter unless your on ubox.")
+    #if int(phrasemotor.find('.//l_slow_abs_current').text) == 0:
+    #    st.warning("Slow abs current is disablled, This mostlikely dosen't matter unless your on ubox.")
 
     #Check motor current max and break
 
@@ -360,6 +360,10 @@ if submitted:
             except Exception as e:
                 st.error("Error merging files: " + str(e))
     
+    #made with ❤️
+    #Footer saying this is a open source project with a hyperlink
+    st.markdown("<p style='text-align: center;'> <a href='https://github.com/Cloud-121/webvescxmlviewer'>Made with ❤️ by Cloud</a></p>", unsafe_allow_html=True)
+    
 
     
 
@@ -375,6 +379,7 @@ if submitted:
     #Front end
 else:
     st.text("Please submit your vesc xml files to view them in the sidebar.")
-    st.text("Pretend this is a gudie on how to get them")
+    st.text("PLACEHOLDER: Pretend this is a gudie on how to get them")
 
-    st.text("Thing about vesc being a name thingy and all the other things your supposed to do.")
+    #Footer saying this is a open source project with a hyperlink
+    st.markdown("<p style='text-align: center;'> <a href='https://github.com/Cloud-121/webvescxmlviewer'>Made with ❤️ by Cloud</a></p>", unsafe_allow_html=True)
